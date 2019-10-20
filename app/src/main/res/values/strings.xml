@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppChat</string>
+    <string name="hint_enter_a_message">Nhập tin nhắn vào đây</string>
+    <string name="start_typing_status">start typing</string>
+    <string name="stop_typing_status">stop typing</string>
+    <string name="action_delete">Xóa</string>
+    <string name="action_copy">Sao chép</string>
+    <string name="copied_message">Chép</string>
+</resources>

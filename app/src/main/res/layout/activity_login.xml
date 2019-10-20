@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/holo_green_light"
+    xmlns:tools="http://schemas.android.com/tools">
+    <EditText
+        android:id="@+id/email_edittext_login"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/edittext_customer"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <EditText
+        android:id="@+id/password_edittext_login"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_customer"
+        android:ems="10"
+        android:hint="PassWord"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/email_edittext_login"
+        app:layout_constraintRight_toRightOf="@id/email_edittext_login"
+
+        app:layout_constraintTop_toBottomOf="@id/email_edittext_login"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <Button
+        android:id="@+id/login_btn_login"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/register_button_customer"
+        android:text="Button"
+        app:layout_constraintLeft_toLeftOf="@id/password_edittext_login"
+        app:layout_constraintRight_toRightOf="@id/password_edittext_login"
+        app:layout_constraintTop_toBottomOf="@id/password_edittext_login"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="293dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

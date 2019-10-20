@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_green_light"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avata_button_register"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/hieu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="60dp" />
+    <EditText
+        android:id="@+id/userName_edit_Register"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:paddingLeft="15dp"
+        android:inputType="textPersonName"
+        android:hint="User Name"
+        android:background="@drawable/edittext_customer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avata_button_register" />
+
+    <EditText
+        android:id="@+id/email_editext_Register"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:background="@drawable/edittext_customer"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="15dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/userName_edit_Register"
+        app:layout_constraintStart_toStartOf="@+id/userName_edit_Register"
+        app:layout_constraintTop_toBottomOf="@+id/userName_edit_Register" />
+
+    <EditText
+        android:id="@+id/password_edittext_Register"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/email_editext_Register"
+        app:layout_constraintLeft_toLeftOf="@id/email_editext_Register"
+        app:layout_constraintRight_toRightOf="@id/email_editext_Register"
+        android:layout_marginTop="30dp"
+        android:hint="PassWord"
+        android:paddingLeft="15dp"
+        android:background="@drawable/edittext_customer" />
+
+    <Button
+        android:id="@+id/register_btn_register"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Register"
+        android:textAllCaps="true"
+
+        app:layout_constraintTop_toBottomOf="@id/password_edittext_Register"
+        app:layout_constraintLeft_toLeftOf="@id/password_edittext_Register"
+        app:layout_constraintRight_toRightOf="@id/password_edittext_Register"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/register_button_customer"
+        android:textColor="@android:color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
