@@ -4,15 +4,15 @@ import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.commons.models.MessageContentType
 import java.util.*
 
-class Message @JvmOverloads constructor(
+class Message (
     private val id: String,
     private val user: User,
     private var text: String?,
     private var createdAt: Date? = Date(),
 
-    private var image: Image? = null,
+    private var imageUrl:String? =null,
     private var voice: Voice? = null
-) : IMessage, MessageContentType.Image, /*this is for default image messages implementation*/
+) : IMessage,MessageContentType.Image, /*this is for default image messages implementation*/
     MessageContentType /*and this one is for custom content type (in this case - voice message)*/ {
     constructor():this("",User(),"",null,null,null)
     val status: String
@@ -33,8 +33,9 @@ class Message @JvmOverloads constructor(
         return this.user
     }
 
-    override fun getImageUrl(): String? {
-        return if (image == null) null else image!!.url
+     override fun getImageUrl(): String? {
+        if(imageUrl==null) return null
+        else return imageUrl
     }
 
     fun setText(text: String) {
@@ -45,13 +46,11 @@ class Message @JvmOverloads constructor(
         this.createdAt = createdAt
     }
 
-    fun setImage(image: Image) {
-        this.image = image
+    fun setImageUrl(image: String) {
+        this.imageUrl = image
     }
     fun setVoice(voice: Voice) {
         this.voice = voice
     }
-    class Image( val url: String)
-
     class Voice(val url: String, val duration: Int)
 }

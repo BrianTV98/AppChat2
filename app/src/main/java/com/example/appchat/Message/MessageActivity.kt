@@ -64,8 +64,9 @@ class MessageActivity : AppCompatActivity(),MessagesListAdapter.OnLoadMoreListen
         messagesAdapter=MessagesListAdapter<Message>(senderId, Companion.imageLoader)
         // lay IdDialog hien tại
         idDialog= intent.getStringExtra("idDialog")
-
+        // lay lich su tin nhan
         val getData= MessageData().getMessageHistory(idDialog, messagesAdapter)
+        // cap nhap tin nhan ngay tai thoi diem hien tai
         val getLastMessage=MessageData().getMessageRealtime(idDialog, messagesAdapter)
         messagesAdapter.notifyDataSetChanged()
         messagesList!!.setAdapter(messagesAdapter)
@@ -97,27 +98,34 @@ class MessageActivity : AppCompatActivity(),MessagesListAdapter.OnLoadMoreListen
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*" // thu muc image
         startActivityForResult(intent, 0)
-        //up hinh len firebase roi moi lay url
-        val urlString=uploadImage()
-        val message = Message(getKey(), userCurently,input.toString())
-        message.setImage(Message.Image(urlString))
-        messagesAdapter?.addToStart(message, true)
     }
 
-    private fun uploadImage() :String{
+    private fun uploadImage() {
         val idImage= UUID.randomUUID().toString()
+        Log.d("UUID",idImage)
         val ref= FirebaseStorage.getInstance()
             .getReference("/imageDialog/${idDialog}/${idImage}")
+
+        Log.d("UUID","Load ko thanh cong")
+
         ref.putFile(selectedPhotoUrl!!)
             .addOnSuccessListener {
                 Log.d("loadImage"," thanh cong")
-                return@addOnSuccessListener
+                ref.downloadUrl.addOnSuccessListener {
+                    Log.d("Url", it.toString())
+
+                    val message = Message(getKey(), userCurently,"",
+                        Date(),it.toString()
+                    )
+
+                    updateMessage(idDialog,message)
+                    messagesAdapter?.addToStart(message, true)
+                }
             }
             .addOnFailureListener{
                 Log.d("loadImage","That bai")
                 return@addOnFailureListener
             }
-        return  ref.downloadUrl.toString()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -125,6 +133,7 @@ class MessageActivity : AppCompatActivity(),MessagesListAdapter.OnLoadMoreListen
         if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
             Log.d("Register", "Photo was selected")
             selectedPhotoUrl = data.data
+            uploadImage()
         }
     }
 

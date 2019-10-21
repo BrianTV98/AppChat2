@@ -17,13 +17,16 @@ class MessageData {
 
             override fun onDataChange(p0: DataSnapshot) {
                 var message= Message()
-
                 p0.children.forEach(){
 
                     message= it.getValue(Message::class.java)!!
                     messagesListAdapter.addToStart(message, false)
                     Log.d("testUser",message.user.name)
                     Log.d("testdata", message.text)
+                    if (message.imageUrl!=null){
+                        Log.d("test" , message.imageUrl)
+                    }
+                    else Log.d("test" , "Khong co anh")
                 }
             }
 
@@ -39,6 +42,7 @@ class MessageData {
             override fun onDataChange(p0: DataSnapshot) {
                 p0.children.forEach(){
                     var message= it.getValue(Message::class.java)!!
+                    message.imageUrl
                     Log.d("lassMessage",message.text)
                     Log.d("testUser",message.user.name)
                     if(message.user!= DialogActivity.userCurrently)
