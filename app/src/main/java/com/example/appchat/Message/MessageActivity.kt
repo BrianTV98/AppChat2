@@ -106,7 +106,7 @@ class MessageActivity : AppCompatActivity(),MessagesListAdapter.OnLoadMoreListen
         val ref= FirebaseStorage.getInstance()
             .getReference("/imageDialog/${idDialog}/${idImage}")
 
-        Log.d("UUID","Load ko thanh cong")
+        Log.d("UUID","Load Khong thanh cong")
 
         ref.putFile(selectedPhotoUrl!!)
             .addOnSuccessListener {
